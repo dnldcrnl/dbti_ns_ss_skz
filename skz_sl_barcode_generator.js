@@ -18,16 +18,6 @@ define(['N/ui/serverWidget', 'N/search'], (serverWidget, search) => {
                 label: 'Select'
             });
 
-            // select.addSelectOption({
-            //     value: 'a',
-            //     text: 'Albert'
-            // });
-            // select.addSelectOption({
-            //     value: 'b',
-            //     text: 'Baron'
-            // });
-
-
             form.addSubmitButton({
                 label: 'Submit Button'
             });
