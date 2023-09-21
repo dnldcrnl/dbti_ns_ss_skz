@@ -18,7 +18,7 @@ define(['N/ui/serverWidget', 'N/search'], (serverWidget, search) => {
                 label: 'Select'
             });
 
-            
+            // Test
             
             form.addSubmitButton({
                 label: 'Submit Button'
