@@ -24,7 +24,7 @@ define(['N/ui/serverWidget', 'N/query'],
                 nextfield: 'entity'
             });
 
-            var sqlQuery = "SELECT id, altName FROM vendor WHERE altName NOT LIKE '-%'";
+            var sqlQuery = "SELECT -1 as id, '- Select -' as altName union all SELECT id, altName FROM vendor WHERE altName NOT LIKE '-%'";
 
             var queryResult = query.runSuiteQL({
                 query: sqlQuery
