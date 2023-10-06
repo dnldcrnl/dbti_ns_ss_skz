@@ -9,6 +9,10 @@ define(['N/record'],
 
         function pageInit(context) {
 
+            var currentRecord = context.currentRecord;
+
+            currentRecord.setValue('salesrep', currentRecord.getValue('createdfrom'));
+
         }
 
         function fieldChanged(context) {

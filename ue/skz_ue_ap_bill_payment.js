@@ -2,11 +2,11 @@
  * @NApiVersion 2.x
  * @NScriptType UserEventScript
  * @NModuleScope SameAccount
+ * 
  */
+define(['N/ui/serverWidget', 'N/query', './sfli_cs_next_code_generator'],
 
-define(['N/ui/serverWidget', 'N/query'],
-
-    function (serverWidget, query) {
+    function (serverWidget, query, codegen) {
 
         function beforeLoad(context) {
 
@@ -41,6 +41,26 @@ define(['N/ui/serverWidget', 'N/query'],
                 });
 
             }
+
+            /**
+             * 
+             * Modified by: DBTI - Ricky Eredillas Jr.
+             * Date: October 02, 2023
+             * 
+             */
+
+            var ref_no_field = form.getField({
+                id: 'tranid',
+            });
+
+            ref_no_field.updateDisplayType({
+                displayType: serverWidget.FieldDisplayType.INLINE,
+            });
+
+            var next_ref_no = codegen.getNextCode(query, "select tranid from transaction where recordtype = 'vendorbill' and tranid like 'AP%' and id = (select MAX(id) from transaction where recordtype = 'vendorbill' and tranid like 'AP%')", 'AP');
+
+            newRecord.setValue('tranid', next_ref_no);
+
         }
 
         return {
