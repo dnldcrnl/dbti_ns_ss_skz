@@ -11,7 +11,12 @@ define(['N/record'],
 
             var currentRecord = context.currentRecord;
 
-            currentRecord.setValue('salesrep', currentRecord.getValue('createdfrom'));
+            var createdfrom = currentRecord.getValue('createdfrom');
+
+            if (createdfrom) {
+                currentRecord.setValue('salesrep', createdfrom);
+            }
+
 
         }
 

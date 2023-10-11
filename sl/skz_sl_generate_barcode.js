@@ -27,10 +27,10 @@ define(['N/render', 'N/record', 'N/xml'], function (render, record, xml) {
             name: 'content-disposition',
             value: 'inline; filename="' + pdfFileName + '_' + 'bsc' + '.pdf"'
         });
-      
-         var pdfFile = renderer.renderAsPdf();
-         context.response.writeFile(pdfFile, true);
-         // context.response.writeFile(renderer.renderAsPdf());
+
+        var pdfFile = renderer.renderAsPdf();
+        context.response.writeFile(pdfFile, true);
+        // context.response.writeFile(renderer.renderAsPdf());
     }
     return {
         onRequest: onRequest
