@@ -10,8 +10,33 @@ define(['N/url',],
         function pageInit(context) {
         }
 
-        function onGenerateBarcodeBtnClick(items) {
+        function onGenerateBarcodeBtnClick(record) {
 
+            const items = [];
+
+            const itemsSublist = record.sublists.item;
+
+            for (const key in itemsSublist) {
+
+                var barcode = itemsSublist[key].custcol_item_barcode;
+
+                // Check if barcode is not empty
+                if (barcode) {
+
+                    const item = {};
+
+                    item.barcode = barcode;
+
+                    item.itemName = itemsSublist[key].sitemname;
+
+                    item.quantity = itemsSublist[key].itemquantity;
+
+                    items.push(item);
+                }
+
+            }
+
+            // Open printable barcodes pdf 
             var suiteletUrl = url.resolveScript({
                 scriptId: 'customscript_skz_suitelet_brc_generator',
                 deploymentId: 'customdeploy1',
